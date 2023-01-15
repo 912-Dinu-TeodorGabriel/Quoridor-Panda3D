@@ -189,6 +189,14 @@ class services():
                     self.swapPieces(self.repo.last_black_pos, fr)          
                 if self.repo.last_black_pos < 8:
                     self.repo.winner = 'black'
+                    if self.repo.last_white_pos < 10 and self.repo.prev_white_pos < 10:
+                        self.repo.undo_history.append("move0" + str(self.repo.last_white_pos) + "0" + str(self.repo.prev_white_pos))
+                    elif self.repo.last_white_pos >= 10 and self.repo.prev_white_pos >= 10:
+                        self.repo.undo_history.append("move" + str(self.repo.last_white_pos) + str(self.repo.prev_white_pos))
+                    elif self.repo.last_white_pos >= 10 and self.repo.prev_white_pos < 10:
+                        self.repo.undo_history.append("move" + str(self.repo.last_white_pos) + "0" + str(self.repo.prev_white_pos))
+                    else:
+                        self.repo.undo_history.append("move0" + str(self.repo.last_white_pos) + str(self.repo.prev_white_pos))
                 self.repo.recoil_wall_b = 0
                 
                       
@@ -216,6 +224,14 @@ class services():
                 self.swapPieces(self.repo.last_black_pos, fr)         
             if self.repo.last_black_pos < 8:
                 self.repo.winner = 'black'
+                if self.repo.last_white_pos < 10 and self.repo.prev_white_pos < 10:
+                    self.repo.undo_history.append("move0" + str(self.repo.last_white_pos) + "0" + str(self.repo.prev_white_pos))
+                elif self.repo.last_white_pos >= 10 and self.repo.prev_white_pos >= 10:
+                    self.repo.undo_history.append("move" + str(self.repo.last_white_pos) + str(self.repo.prev_white_pos))
+                elif self.repo.last_white_pos >= 10 and self.repo.prev_white_pos < 10:
+                    self.repo.undo_history.append("move" + str(self.repo.last_white_pos) + "0" + str(self.repo.prev_white_pos))
+                else:
+                    self.repo.undo_history.append("move0" + str(self.repo.last_white_pos) + str(self.repo.prev_white_pos))
             self.repo.recoil_wall_b = 0
                 
     def check_position(self, move):
@@ -292,6 +308,14 @@ class services():
         self.repo.prev_white_pos = fr
         if(to >=56):
             self.repo.winner = "white"
+            if self.repo.last_black_pos < 10 and self.repo.prev_black_pos < 10:
+                self.repo.undo_history.append("move0" + str(self.repo.last_black_pos)+ "0" + str(self.repo.prev_black_pos))
+            elif self.repo.last_black_pos >= 10 and self.repo.prev_black_pos < 10:
+                self.repo.undo_history.append("move" + str(self.repo.last_black_pos) + "0" + str(self.repo.prev_black_pos))
+            elif self.repo.last_black_pos < 10 and self.repo.prev_black_pos >= 10:
+                self.repo.undo_history.append("move0" + str(self.repo.last_black_pos) + str(self.repo.prev_black_pos))
+            else:
+                self.repo.undo_history.append("move" + str(self.repo.last_black_pos) + str(self.repo.prev_black_pos))  
         else:
             self.move_black()
 

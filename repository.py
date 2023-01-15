@@ -73,6 +73,8 @@ class repos:
                 
         except:
             print("New game.Error file not found.")
+        else:
+            print("Game loaded.")
 
     def _write(self):
         #writes a text file
@@ -150,6 +152,9 @@ class repos:
         self.undo_history = []
 
     def undo(self):
+        if self.winner == 'black':
+            self.pieces[self.last_black_pos].obj.removeNode()
+            self.pieces[self.last_black_pos] = None
         if len(self.undo_history): 
             for i in range (len(self.undo_history)):
                 if i%2 :
@@ -158,6 +163,7 @@ class repos:
                     print(i,"white", self.undo_history[i])
             print("\n")
             change = 0
+            print(self.undo_history[-1][4:6], self.undo_history[-1][6:])
             if len(self.undo_history)>=3 and self.undo_history[-1][:4] == self.undo_history[-2][:4] and self.undo_history[-1][4:6] == self.undo_history[-3][4:6] and self.undo_history[-1][6:8] == self.undo_history[-2][6:8]:
                 self.undo_history.pop()
             elif len(self.undo_history)%2:
@@ -180,8 +186,9 @@ class repos:
             if _last[:4] == 'wall':
                 self.last_wall_b = (int(_last[5]) - int('0')) * 10 + int(_last[6]) - int('0')
                 _last = (int(_last[4]) - int('0'))* 10 + int(_last[5]) - int('0')
-                self.pieces[_last].obj.removeNode()
-                self.pieces[_last] = None
+                if self.pieces[_last]:
+                    self.pieces[_last].obj.removeNode()
+                    self.pieces[_last] = None
                 self.walls += 1
                 self.mat[_last//8][_last%8] = 1
                 self.recoil_wall_w = 0 
@@ -203,8 +210,9 @@ class repos:
             if _last[:4] == 'wall':
                 self.last_wall_b = (int(_last[5]) - int('0')) * 10 + int(_last[6]) - int('0')
                 _last = (int(_last[4]) - int('0'))* 10 + int(_last[5]) - int('0')
-                self.pieces[_last].obj.removeNode()
-                self.pieces[_last] = None
+                if self.pieces[_last]:
+                    self.pieces[_last].obj.removeNode()
+                    self.pieces[_last] = None
                 self.b_walls += 1
                 self.mat[_last//8][_last%8] = 1
                 self.recoil_wall_b = 0

@@ -3,10 +3,9 @@
 from panda3d.core import LPoint3
 BLACK = (0, 0, 0, 1)
 WHITE = (1, 1, 1, 1)
-HIGHLIGHT = (0, 1, 1, 1)
-PIECEBLACK = (.2, .2, .2, 1)
-BLACK_WALL = (.4, .4, .4, 1)
+BLACK_WALL = (.2, .2, .2, 1)
 WHITE_WALL = (255,255,255,1)
+
 class Piece(object):
     def __init__(self, square, color):
         self.obj = loader.loadModel(self.model)

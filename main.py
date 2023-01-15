@@ -4,6 +4,7 @@ from panda3d.core import CollisionHandlerQueue, CollisionRay
 from panda3d.core import AmbientLight, DirectionalLight
 from panda3d.core import TextNode
 from panda3d.core import LVector3, BitMask32
+from panda3d.core import TransparencyAttrib
 from direct.task.Task import Task
 from direct.showbase.ShowBase import ShowBase
 from direct.gui.OnscreenText import OnscreenText
@@ -32,6 +33,7 @@ class Chessboard(ShowBase):
         self.services = services()
         self.repo = self.services.repo
         self.repo._read()
+        self.project = None
         # This code puts the standard title and instruction text on screen
         self.curr_bg = 1
         self.background = OnscreenImage(parent=render2dp, image="models/background1.jpg")
@@ -146,7 +148,10 @@ class Chessboard(ShowBase):
         if self.repo.winner == False:
             # First, clear the current highlight
             if self.hiSq is not False:
-                self.repo.squares[self.hiSq].setColor(services.SquareColor(self.hiSq))
+                if self.project:
+                    self.project.obj.removeNode()
+                    self.project = None
+                #self.repo.squares[self.hiSq].setColor(services.SquareColor(self.hiSq))
                 self.hiSq = False
 
             # Check to see if we can access the mouse. We need it to do anything
@@ -180,7 +185,12 @@ class Chessboard(ShowBase):
                     self.pq.sortEntries()
                     i = int(self.pq.getEntry(0).getIntoNode().getTag('square'))
                     # Set the highlight on the picked square
-                    self.repo.squares[i].setColor(HIGHLIGHT)
+                    if self.repo.pieces[i] == None and self.dragging == False:
+                        self.project = Wall(i, WHITE_WALL)
+                        self.project.obj.setTransparency(TransparencyAttrib.MAlpha)
+                        self.project.obj.setAlphaScale(0.59)
+                        x,y,z = services.SquarePos(i)
+                        self.project.obj.setPos(LPoint3(x + 0.5, y, z))
                     self.hiSq = i
         else:
             if self.repo.winner == "white":
@@ -194,6 +204,10 @@ class Chessboard(ShowBase):
         # mode
         if self.hiSq is not False and self.repo.pieces[self.hiSq] and self.repo.pieces[self.hiSq].is_wall == 0 and self.repo.pieces[self.hiSq].obj.getColor() == WHITE:
             self.dragging = self.hiSq
+            if self.project:
+                self.project.obj.removeNode()
+                self.project = None
+
             self.hiSq = False
         elif self.hiSq is not False:
             #put a wall in that square
