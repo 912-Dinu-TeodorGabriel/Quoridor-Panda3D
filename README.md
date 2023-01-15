@@ -38,8 +38,6 @@ The first player who reaches one of the 8 squares opposite his base line is the 
   
 ![img1](https://user-images.githubusercontent.com/115081686/212552057-eb8f3654-d48a-4313-88b3-fc4a512d0891.jpg)
 
-<h3>Updates</h3>
-
 <h1>Version 1.1</h1>
 ~bug fix : when the black wins the undo didn't work properly
 
