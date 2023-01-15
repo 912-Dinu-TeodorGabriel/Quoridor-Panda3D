@@ -38,9 +38,9 @@ The first player who reaches one of the 8 squares opposite his base line is the 
   
 ![img1](https://user-images.githubusercontent.com/115081686/212552057-eb8f3654-d48a-4313-88b3-fc4a512d0891.jpg)
 
-<b3>Updates</b3>
-<b2>Version 1.1</b2>
+<h3>Updates</h3>
+<h2>Version 1.1</h2>
 -bug fix : when the black wins the undo didn't work properly
 -new : you can visualize the wall block until you place it
-<b2>Version 1.0</b2>
-RELEASE
+<h2>Version 1.0</h2>
+~RELEASE~
