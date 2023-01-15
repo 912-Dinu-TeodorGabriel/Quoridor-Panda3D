@@ -40,7 +40,8 @@ The first player who reaches one of the 8 squares opposite his base line is the 
 
 <h3>Updates</h3>
 <h2>Version 1.1</h2>
--bug fix : when the black wins the undo didn't work properly
--new : you can visualize the wall block until you place it
+~bug fix : when the black wins the undo didn't work properly
+
+~new : you can visualize the wall block until you place it
 <h2>Version 1.0</h2>
 ~RELEASE~
