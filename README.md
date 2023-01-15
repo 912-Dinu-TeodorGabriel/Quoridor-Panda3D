@@ -1,6 +1,6 @@
 # Quoridor-Panda3D
 <h3>Before compile</h3>
-<h4>You must have Panda3D installed ( pip install Panda3D ), for more informations about the framework on https://www.panda3d.org/
+You must have Panda3D installed ( pip install Panda3D ), for more informations about the framework on https://www.panda3d.org/
 <h3>Game Rules</h3>
 
 Each player in turn, chooses to move his pawn or to put up one of his fences. When he has run out of fences, the player must move his pawn.
