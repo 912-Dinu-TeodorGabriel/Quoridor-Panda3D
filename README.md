@@ -34,6 +34,6 @@ The first player who reaches one of the 8 squares opposite his base line is the 
 
 ![game7](https://user-images.githubusercontent.com/115081686/212550026-e11bb4b8-f93d-48f8-9b61-652d4cce9ddb.jpg)
   
-<h3>General information about game</h3>
+<h3>General info about game</h3>
   
 ![img1](https://user-images.githubusercontent.com/115081686/212552057-eb8f3654-d48a-4313-88b3-fc4a512d0891.jpg)
