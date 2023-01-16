@@ -32,6 +32,7 @@ class services():
         elif to == self.repo.last_white_pos:
             self.repo.last_white_pos = fr
         
+        
 
         temp = self.repo.pieces[fr]
         self.repo.pieces[fr] = self.repo.pieces[to]
