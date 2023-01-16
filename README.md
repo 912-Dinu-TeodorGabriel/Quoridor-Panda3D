@@ -37,7 +37,8 @@ The first player who reaches one of the 8 squares opposite his base line is the 
 <h3>General info about game</h3>
   
 ![img1](https://user-images.githubusercontent.com/115081686/212552057-eb8f3654-d48a-4313-88b3-fc4a512d0891.jpg)
-
+<h1>Version 1.2</h1>
+~bug fix : on moving on a wrong square it reseted the wait move for placing a wall
 <h1>Version 1.1</h1>
 ~bug fix : when the black won the undo didn't work properly
 
