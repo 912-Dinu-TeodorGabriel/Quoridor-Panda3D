@@ -207,11 +207,11 @@ class Chessboard(ShowBase):
             if self.project:
                 self.project.obj.removeNode()
                 self.project = None
-
             self.hiSq = False
+            
         elif self.hiSq is not False:
             #put a wall in that square
-            if self.repo.pieces[self.hiSq] == None and self.repo.walls and self.repo.recoil_wall_w < 1 and self.repo.winner == False and self.services.check_position(self.hiSq) == False:
+            if self.repo.pieces[self.hiSq] == None and self.repo.walls and self.repo.recoil_wall_w == 0 and self.repo.winner == False and self.services.check_position(self.hiSq) == False:
                 print(self.hiSq)
                 self.services.move_white(self.hiSq)
                 self.textObject.setText('Great move')
@@ -230,11 +230,12 @@ class Chessboard(ShowBase):
             if self.hiSq is not False and (self.dragging == self.hiSq + 1 or self.dragging == self.hiSq - 1 or self.dragging == self.hiSq + 8 or self.dragging == self.hiSq - 8) and (self.repo.pieces[self.hiSq] == None or self.repo.pieces[self.hiSq].is_wall == 0):
                 self.services.move_on_board(self.dragging, self.hiSq)
                 self.textObject.setText('Great move')
+                self.repo.recoil_wall_w = 0
             else:
                 self.textObject.setText('Illegal move')
                 self.repo.pieces[self.dragging].obj.setPos(
                     services.SquarePos(self.dragging))
-            self.repo.recoil_wall_w = 0
+
         # We are no longer dragging anything
         self.dragging = False
 
